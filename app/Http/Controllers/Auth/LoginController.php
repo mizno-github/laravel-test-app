@@ -55,8 +55,6 @@ class LoginController extends Controller
         if($provider == 'twitter') {
             // なにもしない
         } else {
-            // statelessメソッドはセッション状態の確認を無効にするために使用します。
-            // これはAPIへソーシャル認証を追加する場合に便利です。
             $user = Socialite::driver('github')->user();
             $loginUser = User::gitFindOrCreate($user);
             Auth::loginUsingId($loginUser->id, $remember = true);
