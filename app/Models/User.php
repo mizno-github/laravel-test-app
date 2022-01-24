@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function gitFindOrCreate($user){
+        return $user = $this->firstOrCreate(
+            ['email' => $user->getEmail()],
+            ['name'  => $user['login']]
+        );
+    }
 }

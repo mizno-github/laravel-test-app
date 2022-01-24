@@ -15,13 +15,15 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::prefix('todo')->group(function () {
-    Route::get('/all', [TodoController::class, 'all']);
-    Route::post('/', [TodoController::class, 'create']);
-    Route::put('/{id}', [TodoController::class, 'update']);
-    Route::delete('/{id}', [TodoController::class, 'delete']);
+Route::middleware('auth:api')->group(function () {
+    Route::prefix('todo')->group(function () {
+        Route::get('/all', [TodoController::class, 'all']);
+        Route::post('/', [TodoController::class, 'create']);
+        Route::put('/{id}', [TodoController::class, 'update']);
+        Route::delete('/{id}', [TodoController::class, 'delete']);
+    });
 });

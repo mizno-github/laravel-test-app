@@ -12,7 +12,13 @@ class TodoController extends Controller
 
     public function __construct(todo $todo)
     {
+        $this->middleware('auth');
         $this->todo = $todo;
+    }
+
+    public function index()
+    {
+        return view('index');
     }
 
     public function all()
