@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Auth::routes();
+Route::get('/', [TodoController::class, 'index']);
+Route::get('/index', [TodoController::class, 'index'])->name('index');
+Route::get('/git', [LoginController::class, 'redirectToProvider']);
+Route::get('/login/{provider}/callback', [LoginController::class, 'handleProviderCallback']);
