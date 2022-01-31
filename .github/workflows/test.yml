@@ -1,16 +1,19 @@
-name: Manual workflow
+name: Manual workflow # github actionの名前
+
 on:
-  workflow_dispatch:
-    inputs:
+  workflow_dispatch: # トリガー
+    inputs: # 入力
       name:
-        description: 'Person to greet'
-        default: 'World'
-        required: true
+        description: 'Person to greet' # 説明
+        default: 'World' # 初期の文字
+        required: true # 空文字の許容
 
 jobs:
-  greet:
-    runs-on: ubuntu-latest
-
+  greet: # ジョブ名（自由記述）
+    runs-on: ubuntu-latest # ジョブが実行される環境
     steps:
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    # Runs a single command using the runners shell
+    # ランナーシェルを使用して単一のコマンドを実行します
+    - name: Send greeting # 実行のまとまり名
+      run: |
+      echo "Hello ${{ github.event.inputs.name }}" # 実際に実行されるもの
