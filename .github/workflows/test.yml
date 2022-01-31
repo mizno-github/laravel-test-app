@@ -1,0 +1,7 @@
+jobs:
+  one1Job:
+    steps:
+      one1Step:
+        one1Action: 'run'
+      two2Step:
+        two2Action: 'run'
