@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: write_date
-      run: date >> ./log.txt
+      run: |
+        date >> ./log.txt
+        cat ./log.txt
