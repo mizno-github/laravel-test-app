@@ -17,8 +17,8 @@
      runs-on: ubuntu-latest
      steps:
        - name: checkPass
-         run: echo ${{ env.AWS_ROLE_ARN }}
-         run: echo ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
+         run: ${{ env.AWS_ROLE_ARN }}
+         run: ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
        - name: Checkout
          uses: actions/checkout@v2
        - uses: aws-actions/configure-aws-credentials@v1
