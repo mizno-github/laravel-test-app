@@ -1,4 +1,4 @@
- hame: s3-deploy-sample
+ name: s3-deploy-sample
  on:
    pull_request:
      types: [opened, synchronize, closed] #他のjobがある想定でこの設定にしている
@@ -21,7 +21,6 @@
          uses: aws-actions/configure-aws-credentials@v1
          with:
            role-to-assume: ${{ env.AWS_ROLE_ARN }}
-           role-session-name: amazon_s3_roll-session
            aws-region: ap-northeast-1
        - run: aws sts get-caller-identity
 
