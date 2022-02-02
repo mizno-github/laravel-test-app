@@ -1,13 +1,13 @@
-name: log_create
-on:
-  push:
+# name: log_create
+# on:
+#   push:
 
 
-jobs:
-  write:
-    runs-on: ubuntu-18.04
-    steps:
-    - name: write_date
-      run: |
-        date >> ./log.txt
-        cat ./log.txt
+# jobs:
+#   write:
+#     runs-on: ubuntu-18.04
+#     steps:
+#     - name: write_date
+#       run: |
+#         date >> ./log.txt
+#         cat ./log.txt
