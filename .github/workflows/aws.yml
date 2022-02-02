@@ -18,7 +18,7 @@
      steps:
        - name: Checkout
          uses: actions/checkout@v2
-         uses: aws-actions/configure-aws-credentials@v1
+       - uses: aws-actions/configure-aws-credentials@v1
          with:
            role-to-assume: ${{ env.AWS_ROLE_ARN }}
            aws-region: ap-northeast-1
