@@ -15,11 +15,12 @@
      name: Upload static files
      if: github.event.pull_request.merged == true #マージされたときのみこのjobを実行する
      runs-on: ubuntu-latest
+     environment: aws
      steps:
        - name: checkPass
          run: |
            echo ${{ env.AWS_ROLE_ARN }}
-           echo ${{ secrets.AWSDEV_ACCESS_KEY_ID }}
+           echo ${{ secrets.ID }}
        - name: Checkout
          uses: actions/checkout@v2
        - uses: aws-actions/configure-aws-credentials@v1
