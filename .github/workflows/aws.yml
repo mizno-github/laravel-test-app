@@ -1,33 +1,33 @@
- name: s3-deploy-sample
- on:
-   pull_request:
-     types: [opened, synchronize, closed] #他のjobがある想定でこの設定にしている
+#  name: s3-deploy-sample
+#  on:
+#    pull_request:
+#      types: [opened, synchronize, closed] #他のjobがある想定でこの設定にしている
 
- env:
-  AWS_ROLE_ARN: arn:aws:iam::133546390743:role/amazon_s3_roll # 作成したIAMロールのARN
+#  env:
+#   AWS_ROLE_ARN: arn:aws:iam::133546390743:role/amazon_s3_roll # 作成したIAMロールのARN
 
 
- permissions:
-   id-token: write # required!
-   contents: read
- jobs:
-   UploadStaticFiles:
-     name: Upload static files
-     if: github.event.pull_request.merged == true #マージされたときのみこのjobを実行する
-     runs-on: ubuntu-latest
-     environment: aws
-     steps:
-       - name: checkPass
-         run: |
-           echo ${{ env.AWS_ROLE_ARN }}
-           echo ${{ secrets.ID }}
-       - name: Checkout
-         uses: actions/checkout@v2
-       - uses: aws-actions/configure-aws-credentials@v1
-         with:
-           role-to-assume: ${{ env.AWS_ROLE_ARN }}
-           aws-region: ap-northeast-1
-       - run: aws sts get-caller-identity
+#  permissions:
+#    id-token: write # required!
+#    contents: read
+#  jobs:
+#    UploadStaticFiles:
+#      name: Upload static files
+#      if: github.event.pull_request.merged == true #マージされたときのみこのjobを実行する
+#      runs-on: ubuntu-latest
+#      environment: aws
+#      steps:
+#        - name: checkPass
+#          run: |
+#            echo ${{ env.AWS_ROLE_ARN }}
+#            echo ${{ secrets.ID }}
+#        - name: Checkout
+#          uses: actions/checkout@v2
+#        - uses: aws-actions/configure-aws-credentials@v1
+#          with:
+#            role-to-assume: ${{ env.AWS_ROLE_ARN }}
+#            aws-region: ap-northeast-1
+#        - run: aws sts get-caller-identity
 
 
 #       - name: "Configure AWS credential"
@@ -37,6 +37,6 @@
 #           aws-secret-access-key: ${{ secrets.AWS_DEV_SECRET_ACCESS_KEY }}
 #           aws-region: ap-northeast-1
 
-       - name: S3 sync
-         working-directory: static-files
-         run: aws s3 sync . s3://miznobucket --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --exclude "README.md"
+      #  - name: S3 sync
+      #    working-directory: static-files
+      #    run: aws s3 sync . s3://miznobucket --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --exclude "README.md"
