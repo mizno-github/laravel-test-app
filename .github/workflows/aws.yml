@@ -19,7 +19,7 @@
        - name: checkPass
          run: |
            echo ${{ env.AWS_ROLE_ARN }}
-           echo ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
+           echo ${{ secrets.AWSDEV_ACCESS_KEY_ID }}
        - name: Checkout
          uses: actions/checkout@v2
        - uses: aws-actions/configure-aws-credentials@v1
